@@ -29,13 +29,6 @@ This is my bot, DashBot, that I have been working on, though, it is still a work
 
 > Use -c to show commands.
 
-### License
-I decided to put a license on; please read it before using my work.
-
-***I DO NOT CONDONE ILLEGAL ENDEAVOURS AND WILL NOT BE HELD ACCOUNTABLE FOR ANY SUCH ACT.***
-
-DashBot is owned and run by ***Simoniezi*** under [MIT License](LICENSE) from December 23rd, 2020 and onward.
-
 ## Uses
 DashBot has multiple uses, and more to come!
 Currently, most of which are for moderation.
