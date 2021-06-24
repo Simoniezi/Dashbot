@@ -5,7 +5,6 @@ The Discord bot that I made/work on.
 
 ## Index
 - [Intro](#intro)
-	- [License](#license)
 - [Uses](#uses)
 - [Moderation](#moderation)
  	- [Clear](#clear)
