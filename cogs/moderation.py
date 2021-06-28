@@ -14,6 +14,7 @@ from discord import embeds
 from discord.utils import get
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions, MissingRequiredArgument
+
 # Loading Environmental Variables
 load_dotenv()
 
@@ -33,12 +34,12 @@ class Moderation(commands.Cog):
     # Printing when ready to console
     @commands.Cog.listener()
     async def on_ready(self):
-        print('ModerationHandler is ready\n')
+        print('ModerationHandler is ready')
 
     # Clear chat command
-    @commands.command(aliases=['purge'])
+    @commands.command()
     @has_permissions(manage_messages=True)
-    async def clear(self, ctx, amount=5):
+    async def purge(self, ctx, amount=5):
 
         """Typical purge/clear command to clear large portions of the chat at once. Max 100 messages at once."""
 
@@ -49,7 +50,7 @@ class Moderation(commands.Cog):
         print('Clear command used')
 
     # Clear chat error handler
-    @clear.error
+    @purge.error
     async def clear_error(self, ctx, error):
 
         # Checks if user is missing permissions
