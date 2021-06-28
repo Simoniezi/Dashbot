@@ -4,6 +4,7 @@
 import os
 import sys
 import traceback
+from discord import activity
 from dotenv import load_dotenv
 
 import time
@@ -50,16 +51,44 @@ for filename in os.listdir('./cogs'):
         bot.load_extension(f'cogs.{filename[:-3]}')
 
 
-# Main Code
 @bot.event
-async def on_ready():
-    await bot.change_presence(
-        status=discord.Status.online,
-        activity=discord.Game('-c || Working very hard!')
-    )
-
+async def on_connect():
+    
+    # Telling when the bot is coonected to Discord
     print(f'{bot.user} has connected to Discord!')
 
+
+# On Ready
+@bot.event
+async def on_ready():
+
+    # Just a help for me, when I update it's activity
+    # Could probably make a command out of it, but meh
+    # Maybe I should though
+    """
+    Playing -> activity = discord.Game(name="!help")
+
+    Streaming -> activity = discord.Streaming(name="!help", url="twitch_url_here")
+
+    Listening -> activity = discord.Activity(type=discord.ActivityType.listening, name="!help")
+
+    Watching -> activity = discord.Activity(type=discord.ActivityType.watching, name="!help")
+    """
+
+    # Defining the activity 
+    activity = discord.Activity(
+        type = discord.ActivityType.listening,
+        name = '-c'
+    )
+
+    # Changing the bots presence
+    await bot.change_presence(
+        status=discord.Status.online,
+        activity=activity
+    )
+
+    # Some Guild action
+    # Was supposed to print the guilds that it's connected to, but it only works for 1 guild and not multiple smh
     GUILD = bot.guilds
 
 
@@ -73,30 +102,27 @@ async def on_ready():
         f'{guild.name} (id: {guild.id})\n'
     )
 
-
+# Responds to messages
+# Allows everything to work, as it can actually pick up messages that is sent.
 @bot.event
 async def on_message(message):
     msg = message.content.casefold().capitalize()
     hello = ['Hello there!', 'Hiya!', 'Hiya', 'Good day!', 'Yo!', 'Yo', 'Hi', 'Hii', 'Hello', 'G\'day']
-    #helloYuwu = ['Hello yuwu!', 'Hi yuwu!', 'Hihi yuwu!', 'Hiya yuwu!']
 
     helloRandom = randchoice(list(hello))
-  #  helloYuwuRandom = randchoice(list(helloYuwu))
 
     if message.author == bot.user:
         return
 
     if msg in hello:
-        print('Said hello')
-        #  if str(message.author) == 'Simoniezi#7138':
-            #   await message.channel.send('Hi owner!')
-    #  elif str(message.author) == 'yuru says desu#7082':
-    #     await message.channel.send(helloYuwuRandom)
-    #       time.sleep(30)
-        #else:
+        print(f'Said hello: {helloRandom} \n')
         await message.channel.send(helloRandom)
 
 
     await bot.process_commands(message)
+
+@bot.event
+async def on_disconnect():
+    print(f'{bot.user} has disconnected from Discord')
 
 bot.run(TOKEN)
