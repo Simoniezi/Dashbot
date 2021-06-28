@@ -7,7 +7,7 @@ The Discord bot that I made/work on.
 - [Intro](#intro)
 - [Uses](#uses)
 - [Moderation](#moderation)
- 	- [Clear](#clear)
+ 	- [Purge](#purge)
 	- [Kick](#kick)
 	- [Ban, Unban and Banlist](#ban-unban-and-banlist)
 	- [Mute and Unmute](#mute-and-unmute)
@@ -33,12 +33,12 @@ DashBot has multiple uses, and more to come!
 Currently, most of which are for moderation.
 
 ### Moderation
-#### Clear
-Ah, the good old clear command, also better known as "purge".
+#### Purge
+Ah, the good old Purge command.
 It works exactly the way you would think, with a maximum of 100 at a time.
-It will clear/purge 5 messages as a default.
+It will purge 5 messages as a default.
 
-*Useage:* -clear (amount) *or* -purge (amount)
+*Useage:* -purge (amount)
 > Requires the Manage_Messages permission
 
 #### Kick
